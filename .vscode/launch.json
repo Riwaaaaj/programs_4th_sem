@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/sitaram/Downloads/9/c_and_c++/c/4th_sem/snippets",
+      "program": "/Users/sitaram/Downloads/9/c_and_c++/c/4th_sem/snippets/build/Debug/outDebug"
+    }
+  ]
+}
