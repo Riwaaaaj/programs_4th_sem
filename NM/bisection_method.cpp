@@ -9,13 +9,12 @@ int main() {
   cin >> a >> b;
   cout << "Enter tolerable error." << endl;
   cin >> e;
-
   if (f(a) * f(b) > 0) { // f(a) and f(b) must have alternate sign.
-    cout << "Your two inital guesses has same sign of their corresponding function. " << endl;
+    cout << "Please make sure that, f(a) * f(b) < 0. " << endl;
     exit(1); //Terminating the program with the error 1.
   }
-  if(f(a) > f(b)) { // Making sure that f(a) is -ve and f(b) is +ve as in line 29, b is replaced
-    float temp;     // by c when f(c) is +ve and vice versa.
+  if(f(a) > f(b)) { // Making sure that f(a) is -ve and f(b) is +ve as in line 29, 
+    float temp;     // b is replaced by c when f(c) is +ve and vice versa.
     temp = a;
     a = b;
     b = temp;
@@ -49,20 +48,3 @@ Enter tolerable error.
                 7       2.70312 2.71875 2.71094 0.0794234
                 8       2.70312 2.71094 2.70703 0.00904924
         Result = 2.70703 */
-
-        // Start
-        // Define function f(x)
-        // Enter two initial guesses and error (say a, b and e)
-        // if (f(a) * f(b) > 0)
-        //   print "f(a) and f(b) must have alternate sign." and exit
-        // if (f(a) > f(b))
-        //   exchange their values to make sure f(a) is -ve and f(b) is +ve
-        // do {
-        //   c = (a + b) * 0.5
-        //   if( f(c) > 0) {
-        //     b = c
-        //   } else if ( f(c) < 0) {
-        //     a = c
-        // } while (fabs(f(c)) > e)
-        // Print c
-        // Exit

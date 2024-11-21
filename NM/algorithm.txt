@@ -1,0 +1,48 @@
+  Pseudo code for bisection method.
+        Start
+        Define function f(x)
+        Enter two initial guesses and error (say a, b and e)
+        if (f(a) * f(b) > 0)
+          print "f(a) and f(b) must have alternate sign." and exit
+        if (f(a) > f(b))
+          exchange their values to make sure f(a) is -ve and f(b) is +ve
+        do {
+          c = (a + b) * 0.5
+          if( f(c) > 0) {
+            b = c
+          } else if ( f(c) < 0) {
+            a = c
+        } while (fabs(f(c)) > e)
+        Print c
+        Exit
+        
+  Pseudo code for false position method.
+        Start
+        Define function f(x)
+        Enter two initial guesses and error (say a, b and e)
+        if (f(a) * f(b) > 0)
+          print "f(a) and f(b) must have alternate sign." and exit
+        if (f(a) > f(b))
+          exchange their values to make sure f(a) is -ve and f(b) is +ve
+        do {
+          c = (b * f(a) - a * f(b)) / (f(a) - f(b));
+          if( f(c) > 0) {
+            b = c
+          } else if ( f(c) < 0) {
+            a = c
+        } while (fabs(f(c)) > e)
+        Print c
+        Exit
+
+  Pseudo code for secant method.
+        Start
+        Define function f(x)
+        Enter two initial guesses and error (say a, b and e)
+        do {
+          c = b - f(b) * (b - a) / (f(b) - f(a));
+          a = b;
+          b = c;
+        } while (fabs(f(c)) > e)
+        Print c
+        Exit
+      
