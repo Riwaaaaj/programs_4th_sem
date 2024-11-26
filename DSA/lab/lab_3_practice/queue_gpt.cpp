@@ -1,6 +1,7 @@
 // CPP program for array
 // implementation of queue
 #include <iostream>
+
 using namespace std;
 
 // A structure to represent a queue
