@@ -13,7 +13,7 @@ public:
   void enqueue(int item) {
     if ((rear + 1) % MAX_SIZE == front) {
       cout << "Queue overflow\n";
-      exit(1);
+      return;
     }
     if (front == - 1) {
       front = 0;
@@ -25,7 +25,7 @@ public:
   int dequeue() {
     if (front == -1) {
       cout << "Queue underflow\n";
-      exit(1);
+      return;
     }
     int item = arr[front];
     if (front == rear) {
@@ -40,6 +40,7 @@ public:
   void traverse() {
     if (front == -1) {
       cout << "Queue is empty \n";
+      return;
     }
     int pointer = front;
     while (pointer != rear) {

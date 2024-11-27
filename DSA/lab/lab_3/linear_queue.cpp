@@ -13,7 +13,7 @@ public:
   void enqueue(int item) {
     if (rear == MAX_SIZE - 1) {
       cout << "Queue overflow\n";
-      exit(1);
+      return;
     }
     if (front == - 1) {
       front = 0;
@@ -23,8 +23,8 @@ public:
 
   int dequeue() {
     if (front == -1 || front > rear) {
-      cout << "Queue overflow\n";
-      exit(1);
+      cout << "Queue underflow\n";
+      return;
     }
     int item = arr[front];
     if (front == rear) {
@@ -40,7 +40,7 @@ public:
   void traverse() {
     if (front == -1) {
       cout << "Queue is empty \n";
-      exit(1);
+      return;
     }
     int pointer = front;
     while (pointer <= rear) {
@@ -53,7 +53,7 @@ public:
 
 int main() {
   Queue obj;
-  int choice, item;
+  int choice = 0, item;
   // bool p = false;
   while (choice != 4) {
     cout << "Menu: \n 1. Enqueue \n 2. Dequeue \n 3. Traverse \n 4. Exit \n";
@@ -63,11 +63,14 @@ int main() {
       cout << "Enter items to enqueue: ";
       cin >> item;
       obj.enqueue(item);
+      break;
     case 2:
       obj.dequeue();
+      break;
     case 3:
       obj.traverse();
-    case 4:
+      break;
+    case 4: break;
     default:
       cout << "Invalid input. \n";
     }
