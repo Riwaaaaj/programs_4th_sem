@@ -1,8 +1,7 @@
 #include <iostream>
 #include <cstdlib>
-#define MAX_SIZE 50
+#define MAX_SIZE 3
 using namespace std;
-
 class Queue {
   int arr[MAX_SIZE];
   int front, rear;
@@ -24,7 +23,7 @@ public:
   int dequeue() {
     if (front == -1 || front > rear) {
       cout << "Queue underflow\n";
-      return;
+      return -1;
     }
     int item = arr[front];
     if (front == rear) {
@@ -54,9 +53,8 @@ public:
 int main() {
   Queue obj;
   int choice = 0, item;
-  // bool p = false;
   while (choice != 4) {
-    cout << "Menu: \n 1. Enqueue \n 2. Dequeue \n 3. Traverse \n 4. Exit \n";
+    cout << "Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : ";
     cin >> choice;
     switch(choice) {
     case 1:
@@ -77,3 +75,27 @@ int main() {
   }
   return 0;
 }
+/*
+Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : 2
+Queue underflow
+Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : 1
+Enter items to enqueue: 55
+Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : 2
+Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : 1
+Enter items to enqueue: 66
+Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : 1
+Enter items to enqueue: 77
+Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : 3
+66
+77
+Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : 1
+Enter items to enqueue: 5
+Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : 2
+Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : 3
+77
+5
+Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : 4
+
+
+
+*/
