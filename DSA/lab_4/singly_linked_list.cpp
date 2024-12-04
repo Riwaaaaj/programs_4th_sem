@@ -1,13 +1,11 @@
 #include <cstdlib>
 #include <iostream>
 using namespace std;
-
 class Node {
 public:
   int data;
   Node *next;
 };
-
 class LinkedList {
   Node *head;
 
@@ -126,7 +124,6 @@ public:
     temp->next = obj.returnHead();
     obj.head = NULL;
   }
-
   void interface() {
     int choice = 0, item, position, insertChoice, deleteChoice;
     while (choice != 5) {
@@ -211,7 +208,6 @@ public:
 };
 int main() {
   LinkedList obj1, obj2;
-
   obj1.interface();
   obj2.interface();
   obj1.concatenate(obj2);
@@ -268,5 +264,4 @@ After concatenating obj 1 and 2, we got the following result in obj1.
 20
 10
 4
-3
-*/
+3*/
