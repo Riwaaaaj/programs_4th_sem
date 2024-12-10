@@ -1,69 +1,89 @@
-#include <cstdlib>
 #include <iostream>
 using namespace std;
 
 class Node {
 public:
   int data;
-  Node* next;
-  Node* previous;
+  Node *next;
+  Node *previous;
 };
 
 class DoublyLinkedList {
   Node *head;
 
 public:
-  DoublyLinkedList() {
-    head = NULL;
-    head->previous = NULL;
+  DoublyLinkedList() { head = nullptr; }
+
+  int countNodes() {
+    int count = 0;
+    Node *temp = head;
+    while (temp != nullptr) {
+      count++;
+      temp = temp->next;
+    }
+    return count;
   }
+
   void insertionBeginning(int item) {
     Node *newNode = new Node;
     newNode->data = item;
-    newNode->next = head;
-    head = newNode;
-  }
-  void deletionBeginning() {
-    if (head == NULL) {
-      cout << "Empty SLL\n";
+    newNode->previous = nullptr;
+    if (head == nullptr) {
+      head = newNode;
+      head->next = nullptr;
       return;
     }
-    Node *temp = head;
-    head = head->next;
-    delete temp;
+    newNode->next = head;
+    head->previous = newNode;
+    head = newNode;
   }
+
+  void deletionBeginning() {
+    if (head == nullptr) {
+      cout << "Empty DLL\n";
+      return;
+    }
+    Node *temp = head->next;
+    delete head;
+    head = temp;
+    head->previous = nullptr;
+  }
+
   void insertionEnd(int item) {
     Node *newNode = new Node;
     newNode->data = item;
-    if (head == NULL) {
-      newNode->next = head;
+    newNode->next = nullptr;
+    if (head == nullptr) {
       head = newNode;
-    } else {
-      Node *temp = head;
-      while (temp->next != NULL) {
-        temp = temp->next;
-      }
-      temp->next = newNode;
-    }
-  }
-  void deletionEnd() {
-    if (head == NULL) {
-      cout << "Empty SLL\n";
-      return;
-    }
-    if (head->next == NULL) {
-      delete head;
-      head = NULL;
+      head->previous = nullptr;
       return;
     }
     Node *temp = head;
-    while (temp->next->next != NULL) {
+    while (temp->next != nullptr) {
       temp = temp->next;
     }
-    delete temp->next;
-    temp->next = NULL;
+    temp->next = newNode;
+    newNode->previous = temp;
   }
-  void insertionBetween(int item, int position) { // 3
+
+  void deletionEnd() {
+    Node *i = head;
+    if (i == nullptr) {
+      cout << "Empty DLL\n";
+      return;
+    }
+    if (i->next == nullptr) {
+      delete i;
+      head = nullptr;
+      return;
+    }
+    while (i->next->next != nullptr) {
+      i = i->next;
+    }
+    delete i->next;
+    i->next = nullptr;
+  }
+  void insertionBetween(int item, int position) {
     Node *newNode = new Node;
     newNode->data = item;
     Node *temp = head;
@@ -72,44 +92,37 @@ public:
       temp = temp->next;
       i++;
     }
+    temp->next->previous = newNode;
     newNode->next = temp->next;
+    newNode->previous = temp;
     temp->next = newNode;
   }
   void deletionBetween(int position) {
-    if (head == NULL) {
-      cout << "Empty SLL\n";
-      return;
-    }
-    if (head->next == NULL) {
-      delete head;
-      head = NULL;
-      return;
-    }
     Node *temp = head;
+    if (temp == nullptr) {
+      cout << "Empty DLL\n";
+      return;
+    }
+    if (position < 2 || position > countNodes()) {
+      cout << "Invalid position.\n";
+      return;
+    }
     int i = 2;
     while (i != position) {
       temp = temp->next;
       i++;
     }
-    Node *nextPosition;
-    temp->next->next == NULL ? nextPosition = NULL
-                             : nextPosition = temp->next->next;
+    temp->next->next->previous = temp;
+    Node *nextAddress = temp->next->next;
     delete temp->next;
-    temp->next = nextPosition;
+    temp->next = nextAddress;
   }
 
-  void traverse() {
-    Node *temp = head;
-    while (temp != NULL) {
-      cout << temp->data << "\n";
-      temp = temp->next;
-    }
-  }
-  void Searching(int item) {
+  void Searching(int key) {
     Node *temp = head;
     bool found = false;
-    while (temp != NULL) {
-      if (temp->data == item) {
+    while (temp != nullptr) {
+      if (temp->data == key) {
         found = true;
         break; // exit loop ensuring that temp is not updated anymore
       }
@@ -121,20 +134,42 @@ public:
       cout << "Item found: " << temp->data << "\n";
     }
   }
+
   Node *returnHead() { return head; }
+
   void concatenate(DoublyLinkedList &obj) {
+    if (head == nullptr) {
+      head = obj.returnHead();
+      obj.head = nullptr;
+      return;
+    }
+    if (obj.returnHead() == nullptr) {
+      return;
+    }
     Node *temp = head;
-    while (temp->next != NULL) {
+    while (temp->next != nullptr) {
       temp = temp->next;
     }
     temp->next = obj.returnHead();
-    obj.head = NULL;
+    obj.returnHead()->previous = temp;
+    obj.head = nullptr;
+  }
+
+
+
+  void traverse() {
+    Node *temp = head;
+    while (temp != nullptr) {
+      cout << temp->data << "\t";
+      temp = temp->next;
+    }
+    cout << "\n";
   }
 
   void interface() {
     int choice = 0, item, position, insertChoice, deleteChoice;
     while (choice != 5) {
-      cout << "Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : ";
+      cout << "\nMenu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : ";
       cin >> choice;
 
       switch (choice) {
@@ -205,7 +240,7 @@ public:
   }
   ~DoublyLinkedList() {
     Node *current = head;
-    while (current != NULL) {
+    while (current != nullptr) {
       Node *temp = current;
       current = current->next;
       delete temp;
@@ -224,52 +259,62 @@ int main() {
   return 0;
 }
 /*
-Output when line 213 to 216 is commented.
-Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 1
-Enter item to insert: 3
+
+Output when line 271 to 275 are commented out                             inputs
+
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :                  1
+Enter item to insert:                                                       4
 Insert at: 1. Beginning 2. Between (Position must be valid i.e not 1st or
-last) 3. End: 3 Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 2
-Delete from: 1. Beginning 2. Between (Position must be valid i.e not 1st or
-last) 3. End: 3 Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 1
-Enter item to insert: 3
+last) 3. End:                                                               3
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :  1
+Enter item to insert:                                                       3
 Insert at: 1. Beginning 2. Between (Position must be valid i.e not 1st or
-last) 3. End: 1 Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 4
-Enter item to search: 3
-Item found: 3
-Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 1
-Enter item to insert: 4
+last) 3. End:                                                               1
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :                  1
+Enter item to insert:                                                       2
 Insert at: 1. Beginning 2. Between (Position must be valid i.e not 1st or
-last) 3. End: 1 Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 1
-Enter item to insert: 7
+last) 3. End:                                                               1
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :                  3
+2 3 4
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :                  4
+Enter item to search:                                                       2
+Item found: 2
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :                  1
+Enter item to insert:                                                       1
 Insert at: 1. Beginning 2. Between (Position must be valid i.e not 1st or
-last) 3. End: 2 Enter position to insert: 2 Menu( 1. Insert 2. Delete 3.
-Traverse 4. Search 5. Exit) : 3
-4
-7
-3
-Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 5
+last) 3. End:                                                               1
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :                  1
+Enter item to insert:                                                       6
+Insert at: 1. Beginning 2. Between (Position must be valid i.e not 1st or
+last) 3. End: 3 Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :  1
+Enter item to insert:                                                       5
+Insert at: 1. Beginning 2. Between (Position must be valid i.e not 1st or
+last) 3. End:                                                               2
+Enter position to insert: 5 Menu( 1. Insert 2. Delete 3.
+Traverse 4. Search 5. Exit) :                                               3
+1 2 3 4 5 6
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :                  5
 Exiting program.
 
-Final output:
-Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 1
-Enter item to insert: 10
+
+
+
+Normal output:
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :                  1
+Enter item to insert:                                                       2
 Insert at: 1. Beginning 2. Between (Position must be valid i.e not 1st or
-last) 3. End: 1 Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 1
-Enter item to insert: 20
+last) 3. End: 1 Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :  1
+Enter item to insert:                                                       3
 Insert at: 1. Beginning 2. Between (Position must be valid i.e not 1st or
-last) 3. End: 1 Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 5
+last) 3. End:                                                               3
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :                  5
 Exiting program.
-Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 1
-Enter item to insert: 3
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :                  1
+Enter item to insert:                                                       4
 Insert at: 1. Beginning 2. Between (Position must be valid i.e not 1st or
-last) 3. End: 1 Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 1
-Enter item to insert: 4
-Insert at: 1. Beginning 2. Between (Position must be valid i.e not 1st or
-last) 3. End: 1 Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) : 5
+last) 3. End:                                                               1
+Menu( 1. Insert 2. Delete 3. Traverse 4. Search 5. Exit) :                  5
 Exiting program.
 After concatenating obj 1 and 2, we got the following result in obj1.
-20
-10
-4
-3
+2 3 4
 */
