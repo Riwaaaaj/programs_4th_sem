@@ -89,3 +89,8 @@ int main() {
 
     return 0;
 }
+/*
+In-order Traversal: 3 5 7 10 15 
+7 is found in the BST.
+20 is not found in the BST.
+*/

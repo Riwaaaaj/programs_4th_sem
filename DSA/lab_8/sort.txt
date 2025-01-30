@@ -1,0 +1,113 @@
+#include<iostream>
+using namespace std;
+
+void bubble_sort(int arr[], int n){
+	for(int i = 0; i < n - 1; i++){
+		for(int j = 0; j < n - 1 - i; j++){
+			if(arr[j] > arr[j+1]){
+				swap(arr[j], arr[j+1]);
+			}
+		}
+	}
+}
+
+void display_array(int arr[], int n){
+	for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+int main(){
+	int arr[] = {12, 11, 13, 5, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Original array: ";
+    display_array(arr, n);
+
+	bubble_sort(arr, n);
+
+    cout << "Sorted array: ";
+	display_array(arr, n);
+	return 0;
+}
+
+----------------------------------------------------------
+
+
+void selection_sort(int arr[], int n){
+	for(int i = 0; i < n - 1; i++){
+		int min_index = i;
+		for(int j = 1 + i; j < n; j++){
+			if(arr[min_index] > arr[j]){
+				min_index = j;
+			}
+		}
+		swap(arr[i], arr[min_index]);
+	}
+}
+
+---------------------------------------------------------------
+
+
+
+void insertion_sort(int arr[], int n){
+	for(int i = 1; i < n; i++){
+		int current = arr[i];
+		int j = i - 1;
+		while(j >= 0 && arr[j] > current){
+			arr[j+1] = arr[j];
+			j--;
+		}
+		arr[j+1] = current;
+	}
+}
+
+
+-----------------------------------------------
+
+void merge(int arr[], int left, int mid, int right){
+	int n1 = mid - left + 1;
+	int n2 = right - mid;
+	
+	int leftArray[n1];
+	int rightArray[n2];
+	
+	for(int i = 0; i < n1; i++){
+		leftArray[i] = arr[left+i];
+	}
+	for(int i = 0; i < n2; i++){
+		rightArray[i] = arr[mid+1+i];
+	}
+	int i = 0, j = 0, k = left;
+	while(i < n1 && j < n2){
+		if(leftArray[i] <= rightArray[j]){
+			arr[k] = leftArray[i];
+			i++;
+		}
+		else{
+			arr[k] = rightArray[j];
+			j++;
+		}
+		k++;
+	}
+	while (i < n1) {
+        arr[k] = leftArray[i];
+        i++;
+        k++;
+    }
+    while (j < n2) {
+        arr[k] = rightArray[j];
+        j++;
+        k++;
+    }
+}
+
+
+void merge_sort(int arr[], int left, int right){
+	if(left < right){
+		int mid = left + (right - left) / 2;
+		merge_sort(arr, left, mid);
+		merge_sort(arr, mid + 1, right);
+		merge(arr, left, mid, right);
+	}
+}

@@ -30,3 +30,10 @@ int main() {
 
     return 0;
 }
+/*
+Enter the item you want to search: 2
+Item found at index: 1
+
+Enter the item you want to search: 78
+Item not found
+*/

@@ -23,3 +23,11 @@ int main() {
   }
   return 0;
 }
+/*
+
+Enter your item that you want to search: 5
+Item not found
+
+Enter your item that you want to search: 10
+Item found at index 1
+*/
