@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define fPrime(x, y) (x + y) // dy/dx = x + y
+#define fPrime(x, y) (x + y * y)
 
 void rungeKutta(double x0, double y0, double n, double xn) {
     double h = (xn - x0) / n; 
@@ -25,13 +25,23 @@ void rungeKutta(double x0, double y0, double n, double xn) {
 }
 
 int main() {
-    rungeKutta(0, 1, 3, 0.3);
+    rungeKutta(0, 1, 1, 0.2);
     return 0;
 }
 /*
+Output when n = 1, f'(x) = x + y, y(0) = 1 at x = 0.3
 x       y
 0.000   1.000
-0.100   1.110
-0.200   1.243
 0.300   1.400
+
+Output when n = 2, f'(x) = x + y * y, y(0) = 1 at x = 0.2
+x       y
+0.000   1.000
+0.100   1.116
+0.200   1.273
+
+Output when n = 1, f'(x) = x + y * y, y(0) = 1 at x = 0.2
+x       y
+0.000   1.000
+0.200   1.269
 */

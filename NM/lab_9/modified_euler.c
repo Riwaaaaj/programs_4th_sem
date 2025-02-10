@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <math.h>
-#define fPrime(x, y) (x + y) // dy/dx = x + y
+#define fPrime(x, y) (x + y * y) // dy/dx = x + y
 int main() {
-    double xInitial = 0, yInitial = 1, xFinal = 0.3;
-    int n = 5;
+    double xInitial = 0, yInitial = 1, xFinal = 0.2;
+    int n = 3;
     double h = (xFinal - xInitial) / n;
     double xN = xInitial, yN = yInitial;
     double slope, aSlope, yTemp, yNext, nextSlope;
@@ -27,7 +27,7 @@ int main() {
         printf("\n");
     }
     return 0;
-}/*
+}/*Output when n = 5, f'(x) = x + y, y(0) = 1 at x = 0.3
 x       y       slope   aSlope  xN      yN
 0.000   1.000   1.000   -       0.060   1.060   (Prediction)
 0.060   1.060   1.000   1.060   0.060   1.064   (Correction)
@@ -47,4 +47,49 @@ x       y       slope   aSlope  xN      yN
 
 0.240   1.302   1.542   -       0.300   1.395   (Prediction)
 0.300   1.395   1.542   1.618   0.300   1.399   (Correction)
-0.300   1.399   1.542   1.621   0.300   1.399   (Correction)*/
+0.300   1.399   1.542   1.621   0.300   1.399   (Correction)
+Output when n = 7, f'(x) = x + y, y(0) = 1 at x = 0.3
+x       y       slope   aSlope  xN      yN
+0.000   1.000   1.000   -       0.043   1.043   (Prediction)
+0.043   1.043   1.000   1.043   0.043   1.045   (Correction)
+0.043   1.045   1.000   1.044   0.043   1.045   (Correction)
+
+0.043   1.045   1.088   -       0.086   1.091   (Prediction)
+0.086   1.091   1.088   1.132   0.086   1.093   (Correction)
+0.086   1.093   1.088   1.133   0.086   1.093   (Correction)
+
+0.086   1.093   1.179   -       0.129   1.144   (Prediction)
+0.129   1.144   1.179   1.226   0.129   1.146   (Correction)
+0.129   1.146   1.179   1.227   0.129   1.146   (Correction)
+
+0.129   1.146   1.274   -       0.171   1.200   (Prediction)
+0.171   1.200   1.274   1.323   0.171   1.202   (Correction)
+0.171   1.202   1.274   1.324   0.171   1.202   (Correction)
+
+0.171   1.202   1.374   -       0.214   1.261   (Prediction)
+0.214   1.261   1.374   1.425   0.214   1.264   (Correction)
+0.214   1.264   1.374   1.426   0.214   1.264   (Correction)
+
+0.214   1.264   1.478   -       0.257   1.327   (Prediction)
+0.257   1.327   1.478   1.531   0.257   1.329   (Correction)
+0.257   1.329   1.478   1.532   0.257   1.329   (Correction)
+
+0.257   1.329   1.586   -       0.300   1.397   (Prediction)
+0.300   1.397   1.586   1.642   0.300   1.399   (Correction)
+0.300   1.399   1.586   1.643   0.300   1.400   (Correction)
+0.300   1.400   1.586   1.643   0.300   1.400   (Correction)
+Output when n = 3, f'(x) = x + y * y, y(0) = 1 at x = 0.2 
+x       y       slope   aSlope  xN      yN
+0.000   1.000   1.000   -       0.067   1.067   (Prediction)
+0.067   1.067   1.000   1.102   0.067   1.073   (Correction)
+0.067   1.073   1.000   1.110   0.067   1.074   (Correction)
+0.067   1.074   1.000   1.110   0.067   1.074   (Correction)
+
+0.067   1.074   1.220   -       0.133   1.155   (Prediction)
+0.133   1.155   1.220   1.344   0.133   1.164   (Correction)
+0.133   1.164   1.220   1.354   0.133   1.164   (Correction)
+
+0.133   1.164   1.487   -       0.200   1.263   (Prediction)
+0.200   1.263   1.487   1.641   0.200   1.273   (Correction)
+0.200   1.273   1.487   1.654   0.200   1.274   (Correction)
+0.200   1.274   1.487   1.655   0.200   1.274   (Correction)*/
