@@ -8,21 +8,22 @@ class Stack {
   int top;
 
 public:
-  Stack() { top = -1; }
+  Stack() : top(-1) {}
   void push(int item) {
     if (top == MAX_SIZE - 1) {
       cout << "Stack overflow" << endl;
-      exit(1);
+      return;
     }
     arr[++top] = item;
   }
 
-  void pop() {
-    if (top == -1) {
-      cout << "Stack underflow" << endl;
-      exit(1);
+  int pop() {
+    if(top == -1) {
+      cout <<"Stack overflow! \n";
+      return -1;
     }
     top--;
+    return arr[top + 1];
   }
 
   void traverse() {
@@ -32,8 +33,8 @@ public:
       for (int i = 0; i <= top; ++i) {
         cout << arr[i] << " ";
       }
+      cout << endl;
     }
-    cout << endl;
   }
 };
 

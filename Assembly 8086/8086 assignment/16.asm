@@ -1,3 +1,4 @@
+; 16. Write an assembly language program to read a string from the user, convert it to upper case, count the number of words and display each word in each line and number of words.
 INCLUDE "EMU8086.INC"
 .MODEL SMALL
 .STACK 100H

@@ -1,3 +1,4 @@
+;2. Write an assembly language program to convert the lower case vowels to upper case.
 DATA SEGMENT
     MSG     DB 'hello world, this is assembly programming.', '$'
 DATA ENDS

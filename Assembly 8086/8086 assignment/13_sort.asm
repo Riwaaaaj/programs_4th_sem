@@ -1,3 +1,4 @@
+;13. Write an assembly language program for 8086 to sort an array of ten numbers stored in memory. Display the numbers in the screen after sorting.
 DATA SEGMENT
     ARRAY DB 04H, 03H, 08H, 05H, 06H, 09H, 02H, 07H, 01H, 06H  
     COUNT DB 9       ; Outer loop runs 9 times for 10 elements

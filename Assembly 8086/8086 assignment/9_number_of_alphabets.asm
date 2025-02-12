@@ -1,3 +1,4 @@
+;9. Write an assembly language program for 8086 to read a string and find the number of alphabets, numerals and other characters. Display the different counts.
 DATA SEGMENT
     MSG1    DB 0DH, 0AH, "ENTER A STRING: $"
     MSG2    DB 0DH, 0AH, "ALPHABETS: $"

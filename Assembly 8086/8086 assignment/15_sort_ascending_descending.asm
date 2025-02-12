@@ -1,3 +1,4 @@
+;15. Write assembly language program for 8086 to sort five numbers in ascending and descending order.
 DATA SEGMENT
     ARRAY DB 04H, 03H, 08H, 05H, 06H  ; 5 Numbers
     COUNT DB 4  ; Outer loop runs 4 times for 5 elements

@@ -1,3 +1,4 @@
+;7. Write an assembly language program for 8086 to find the sum of the following series. x + 2x + 3x + 4x + ... to ten terms. Where x is a two digit number entered by the user. Display the result.
 DATA SEGMENT
     MSG1    DB 0DH, 0AH, "ENTER THE VALUE OF X [TWO DIGITS]: $"
     MSG2    DB 0DH, 0AH, "THE SUM OF THE SERIES IS: $"

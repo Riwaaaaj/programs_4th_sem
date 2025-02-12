@@ -1,4 +1,4 @@
-; Program to sort an array of 10 numbers and display each number in a separate line.
+;6. Write an assembly language program for sorting arrays of numbers and display each number in separate line.
 
 DATA SEGMENT
     MSG1    DB 0DH, 0AH, "Enter 10 numbers: $"

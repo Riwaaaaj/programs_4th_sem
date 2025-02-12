@@ -1,8 +1,4 @@
-INCLUDE 'EMU8086.INC'
-
-.MODEL SMALL
-.STACK 32H
-
+;12. Write an assembly language program for 8086 to read string count the number of vowels in the string and display the string and its vowels count in a clear screen.
 DATA SEGMENT
     MESSAGE1 DB 10,13, "ENTER THE STRING: $"
     MAXLENGTH DB 100

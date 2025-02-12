@@ -1,14 +1,12 @@
 ; 11. Program to generate multiplication tables of five numbers stored in memory.
 ; The results are stored in memory and displayed in table format.
-
 DATA SEGMENT
     NUMBERS     DB 5, 3, 7, 9, 4     ; Numbers for multiplication table
-    RESULTS     DB 50 DUP(0)         ; Storage for results (5 tables × 10 values each)
+    RESULTS     DB 50 DUP(0)         ; Storage for results (5 tables ï¿½ 10 values each)
 
     MSG_TITLE   DB 0DH, 0AH, "MULTIPLICATION TABLE:", 0DH, 0AH, '$'  ; Title Message
     MSG_NEWLINE DB 0DH, 0AH, '$'      ; New line for formatting output
 DATA ENDS
-
 CODE SEGMENT
     ASSUME CS:CODE, DS:DATA
 
@@ -22,7 +20,6 @@ START:
 
     LEA SI, NUMBERS          ; Point to the first number
     LEA DI, RESULTS          ; Point to results storage
-
     MOV CX, 5                ; Number of multiplication tables (5)
     MOV BP, 0                ; Offset tracker for each table
 TABLE_LOOP:
@@ -73,7 +70,6 @@ PRINT_LOOP:
     POP CX                ; Restore CX
     RET
 PRINT_TABLE ENDP
-
 ;-------------------------------
 ; PRINT_NUM - Prints a properly formatted number
 ;-------------------------------

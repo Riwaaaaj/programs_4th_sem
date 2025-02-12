@@ -1,17 +1,14 @@
-; Convert lowercase letters to uppercase and display the modified string  
-
+;17. Write a program to read a string, convert the small case letters to upper case and display the converted string in the next line.
 DATA SEGMENT  
     STR1 DB "ENTER A STRING: ",'$'  
     MAXLEN DB 100  
     STRING DB 100 DUP('$')  
     NEWLINE DB 10,13,'$'  
 DATA ENDS  
-
 CODE SEGMENT  
 MAIN PROC FAR  
     MOV AX, @DATA  
     MOV DS, AX  
-
     MOV AH, 09H  
     LEA DX, STR1  
     INT 21H  

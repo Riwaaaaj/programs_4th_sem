@@ -1,5 +1,4 @@
-; Program to calculate sum of the series 1^2 + 2^2 + 3^2 + ... up to 10 terms and display the result.
-
+;8. Write an assembly language program to calculate sum of the series 12+22+32+42+ ... up to ten terms and display the result.
 DATA SEGMENT
     MESSAGE DB 0DH, 0AH, "THE SUM OF THE SERIES IS: $"
     TEN     DW 10

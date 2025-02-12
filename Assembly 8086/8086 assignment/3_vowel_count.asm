@@ -1,3 +1,4 @@
+;3. Write an assembly language program to count the number of vowels in the entered string.
 DATA SEGMENT
     BUFFER_SIZE DB 50           ; Maximum input size
     INPUT_LEN   DB ?            ; Actual input length (filled by DOS)

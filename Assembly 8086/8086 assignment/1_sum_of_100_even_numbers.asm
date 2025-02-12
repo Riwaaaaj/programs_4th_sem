@@ -1,3 +1,4 @@
+;1. Write an assembly language program to perform the addition of a 100 natural even numbers and display the sum in screen. [sum = n (n+1)]
 DATA    SEGMENT  
     MSG     DB 0DH, 0AH, "The sum of first 100 even numbers is: $"
     SUM     DD 0  

@@ -52,29 +52,41 @@ public:
 
 int main() {
   Queue obj;
-  int choice = 0, item;
-  while (choice != 4) {
-    cout << "Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : ";
-    cin >> choice;
-    switch(choice) {
-    case 1:
-      cout << "Enter items to enqueue: ";
-      cin >> item;
-      obj.enqueue(item);
-      break;
-    case 2:
-      obj.dequeue();
-      break;
-    case 3:
-      obj.traverse();
-      break;
-    case 4: break;
-    default:
-      cout << "Invalid input. \n";
-    }
-  }
+  obj.enqueue(55);
+  obj.enqueue(45);
+  obj.enqueue(25);
+  obj.dequeue();
+  obj.traverse();
+
   return 0;
-}
+}//output 45, 25
+
+// int main() {
+//   Queue obj;
+//   int choice = 0, item;
+//   while (choice != 4) {
+//     cout << "Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : ";
+//     cin >> choice;
+//     switch(choice) {
+//     case 1:
+//       cout << "Enter items to enqueue: ";
+//       cin >> item;
+//       obj.enqueue(item);
+//       break;
+//     case 2:
+//       obj.dequeue();
+//       break;
+//     case 3:
+//       obj.traverse();
+//       break;
+//     case 4: break;
+//     default:
+//       cout << "Invalid input. \n";
+//     }
+//   }
+//   return 0;
+// }
+
 /*
 Menu( 1. Enqueue 2. Dequeue 3. Traverse 4. Exit) : 2
 Queue underflow

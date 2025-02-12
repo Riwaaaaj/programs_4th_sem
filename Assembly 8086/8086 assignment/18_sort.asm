@@ -1,3 +1,4 @@
+;18. Write an 8086-assembly language program to sort ten 16-bit data stored in a table and display the numbers as decimal numbers in the screen.
 DATA SEGMENT  
     TABLE DW 0AAAH, 0999H, 0888H, 0777H, 0666H, 0555H, 0444H, 0333H, 0222H, 0111H  
     NEWLINE DB 10,13,'$'  

@@ -1,6 +1,4 @@
-.MODEL SMALL
-.STACK 32H
-
+;14. Write a program to read a string and separate the words from the string. Display each word at the center of each line of a clear screen with blue background and cyan foreground.
 DATA SEGMENT
     MESSAGE1 DB 10,13, "ENTER A STRING: $"
     MAXLENGTH DB 100
@@ -8,39 +6,28 @@ DATA SEGMENT
     STRING DB 100 DUP('$')  ; Input buffer
     NEWLINE DB 10,13, "$"
 DATA ENDS
-
 CODE SEGMENT
     ASSUME CS:CODE, DS:DATA
-
 MAIN PROC FAR
     MOV AX, DATA
     MOV DS, AX
-
     ; Display prompt message
     LEA DX, MESSAGE1
     CALL PUT
-
     ; Read input string
     LEA DX, MAXLENGTH
     CALL GET
-
     ; Clear screen
     CALL CLEAR_SCREEN
-
     ; Start displaying words at row 10
     MOV BL, 10
-
     ; Process string to separate words
     CALL PROCESS_WORDS
-
     ; Terminate program
     MOV AX, 4C00H
     INT 21H
-
 MAIN ENDP
-
 ; ************* SUBROUTINES *************
-
 ; PUT - Display a string
 PUT PROC
     MOV AH, 09H

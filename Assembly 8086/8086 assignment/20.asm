@@ -1,3 +1,4 @@
+;20. Write an 8086-assembly language program to separate words from a string. Display each word in separate line.
 DATA SEGMENT
     STR1 DB "ENTER A STRING: $"
     MAXLEN DB 100  
@@ -92,7 +93,6 @@ DIV_LOOP:
     INC CX
     CMP AX, 0
     JNE DIV_LOOP
-
 PRINT_LOOP:
     POP DX
     ADD DL, '0'
@@ -101,6 +101,5 @@ PRINT_LOOP:
     LOOP PRINT_LOOP
     RET
 PRINT_NUMBER ENDP
-
 CODE ENDS
 END START

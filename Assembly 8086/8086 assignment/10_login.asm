@@ -1,3 +1,4 @@
+;10. Write an assembly language program to get username “bebct” and password “engineering”; display message “Login Successful” on the screen if the username and password are matched otherwise display “Invalid Login”.
 DATA SEGMENT
     MSG1        DB 0DH,0AH,"USERNAME: $"
     USERNAME    DB 20,?,20 DUP('$')     ; Input buffer for username (larger size)

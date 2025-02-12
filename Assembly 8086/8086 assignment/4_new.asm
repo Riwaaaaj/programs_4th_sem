@@ -1,4 +1,4 @@
-;add 10 8-bit numbers
+;4. Write an assembly language program in 8086 to read ten 8-bit decimal numbers, add them and display the result in the clear screen.
 DATA    SEGMENT  
         
         LINB    DB 0DH, 0AH, " $"
