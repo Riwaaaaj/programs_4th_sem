@@ -1,34 +1,40 @@
 #include <iostream>
-#include <cstdlib>
-#define MAX_SIZE 50
+#include <math.h>
+#include <stdlib.h>
 using namespace std;
+#define max 50
 
 class Stack {
+  char arr[max];
   int top;
-  char arr[MAX_SIZE];
-public:
-  void push(char item) {
-    if (top == MAX_SIZE - 1) {
-      cout << "Stack overflow \n";
-      exit(1);
-    }
-    arr[++top] = item;
-  }
+  public:
+    Stack() : top(-1) {}
 
-  char pop() {
-    if (top == -1) {
-      cout << "Stack underflow \n";
-      exit(1);
+    void push(char item) {
+      if (top == max - 1) {
+        cout << "Stack overflow" << endl;
+        exit(1);
+      }
+      arr[++top] = item;
     }
-    return arr[top--];
-  }
-  char returnTopItem() { 
-    return arr[top]; 
-  }
 
-  int returnTop() { return top; }
-}
+    char pop() {
+      if (top == -1) {
+        cout << "Stack underflow" << endl;
+        exit(1);
+      }
+      return arr[top--];
+    }
+
+    char isEmpty() { return top;}
+};
+
 int main() {
-  
+  Stack obj;
+  char postfix[max];
+  cout << "Enter your postfix expression: ";
+  cin.getline(postfix, max);
+
+
   return 0;
 }

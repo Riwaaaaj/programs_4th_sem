@@ -7,7 +7,7 @@ int main() {
   int item;
   cout << "Enter your item that you want to search: ";
   cin >> item; 
-  int last = arr[MAX_SIZE - 1]; 
+  int last = arr[MAX_SIZE - 1];  
   arr[MAX_SIZE - 1] = item; 
   int i = 0;
   while(arr[i] != item) {

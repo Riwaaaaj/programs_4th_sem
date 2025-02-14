@@ -9,7 +9,7 @@ class Stack {
   int top;
 
 public:
-  Stack() { top = -1; }
+  Stack() : top(-1) {}
   void push(int item) {
     if (top == MAX_SIZE - 1) {
       cout << "Stack overflow" << endl;

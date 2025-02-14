@@ -22,8 +22,7 @@ public:
       cout <<"Stack overflow! \n";
       return -1;
     }
-    top--;
-    return arr[top + 1];
+    return arr[top--];
   }
 
   void traverse() {

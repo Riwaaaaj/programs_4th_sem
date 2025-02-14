@@ -38,7 +38,7 @@ public:
     head = newNode;
   }
 
-  void deletionBeginning() {
+  void deletionBeginning() { //review
     if (head == nullptr) {
       cout << "Empty DLL\n";
       return;
@@ -97,7 +97,7 @@ public:
     newNode->previous = temp;
     temp->next = newNode;
   }
-  void deletionBetween(int position) {
+  void deletionBetween(int position) { //review
     Node *temp = head;
     if (temp == nullptr) {
       cout << "Empty DLL\n";
@@ -137,7 +137,7 @@ public:
 
   Node *returnHead() { return head; }
 
-  void concatenate(DoublyLinkedList &obj) {
+  void concatenate(DoublyLinkedList &obj) { //review
     if (head == nullptr) {
       head = obj.returnHead();
       obj.head = nullptr;
@@ -247,6 +247,28 @@ public:
     }
   }
 };
+
+
+int main() {
+  DoublyLinkedList obj;
+  obj.insertionBeginning(10);
+  obj.insertionBeginning(20);
+  obj.insertionBeginning(30);
+  obj.insertionEnd(5);
+  obj.insertionBetween(15,3);
+  obj.deletionBeginning();
+  obj.deletionEnd();
+  obj.deletionBetween(2);
+  obj.traverse();
+  obj.Searching(10);
+  return 0;
+}
+/*
+20      10
+Item found: 10
+*/
+
+/*
 int main() {
   DoublyLinkedList obj1, obj2;
 
@@ -258,6 +280,9 @@ int main() {
   obj1.traverse();
   return 0;
 }
+
+*/
+
 /*
 
 Output when line 271 to 275 are commented out                             inputs

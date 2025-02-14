@@ -8,7 +8,7 @@ class Stack {
   int top;
 
 public:
-  Stack() { top = -1; }
+Stack() : top(-1) {}
 
   void push(char item) {
     if (top == MAX_SIZE - 1) {
@@ -26,9 +26,9 @@ public:
     return arr[top--];
   }
 
-  char returnTopItem() { return arr[top]; }
+  char peek() { return arr[top]; }
 
-  int returnTop() { return top; }
+  int isEmpty() { return (top == -1); }
 };
 
 int priority(char item) {
@@ -39,8 +39,6 @@ int priority(char item) {
   case '*':
   case '/':
     return 2;
-  case '^':
-    return 3;
   default:
     return 0;
   }
@@ -61,13 +59,12 @@ int main() {
     } else if (isalnum(ch)) {
       postfix[j++] = ch;
     } else if (ch == ')') {
-      while (obj.returnTopItem() != '(') {
+      while (obj.peek() != '(') {
         postfix[j++] = obj.pop();
       }
       obj.pop();
     } else {
-      while (priority(ch) <= priority(obj.returnTopItem()) &&
-             (obj.returnTop() != -1)) {
+      while (priority(ch) <= priority(obj.peek()) && obj.isEmpty()) {
         postfix[j++] = obj.pop();
       }
       obj.push(ch);
@@ -75,7 +72,7 @@ int main() {
     i++;
   }
 
-  while (obj.returnTop() != -1) {
+  while (obj.isEmpty()) {
     postfix[j++] = obj.pop();
   }
 
