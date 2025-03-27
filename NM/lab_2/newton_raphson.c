@@ -5,32 +5,43 @@ static inline double f(double x) { return sin(x) - 1.0 / x; }
 static inline double fPrime(double x) { return cos(x) + 1.0 / x * x; }
 
 int main() {
-  double x, e, xNext;
+  double Xₚᵣₑᵥ, e, Xₙₑₓₜ;
   int i = 1, maxIteration = 20;
+  // printf("Enter initial guess: ");
+  // scanf("%lf", &Xₚᵣₑᵥ);
+  Xₚᵣₑᵥ = 1.0;
+  // printf("Enter tolerable error: ");
+  // scanf("%lf", &e);
+  e = 0.0001;
 
-  printf("Enter initial guess: ");
-  scanf("%lf", &x);
-  printf("Enter tolerable error: ");
-  scanf("%lf", &e);
+  printf("iter\t x\tf(x)\n");
 
-  printf("iter\t x\t\t f(x)\n");
   while (1) {
-    if (fPrime(x) == 0) {
+
+    if (fPrime(Xₚᵣₑᵥ) == 0) {
       printf("Error! Division by zero in %d iteration.\n", i);
       exit(1);
     }
-    xNext = x - f(x) / fPrime(x);
-    if (fabs(xNext - x) < e)
+
+    Xₙₑₓₜ = Xₚᵣₑᵥ - f(Xₚᵣₑᵥ) / fPrime(Xₚᵣₑᵥ);
+
+    if (fabs(Xₙₑₓₜ - Xₚᵣₑᵥ) < e)
       break;
-    printf("%d\t%lf\t%lf\n", i, xNext, f(xNext));
-    x = xNext;
+
+    printf("%d\t%.3lf\t%.3lf\n", i, Xₙₑₓₜ, f(Xₙₑₓₜ));
+
+    Xₚᵣₑᵥ = Xₙₑₓₜ;
+
     if (i == maxIteration) {
       printf("Error! Failed to converge within %d iterations.\n", i);
       exit(1);
     }
+
     i++;
   }
-  printf("Converged to solution x = %lf after %d iterations.\n", x, i - 1);
+
+  printf("Converged to solution x = %lf after %d iterations.\n", Xₚᵣₑᵥ, i - 1);
+  
   return 0;
 }
 /*

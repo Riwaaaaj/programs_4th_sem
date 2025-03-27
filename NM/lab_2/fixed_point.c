@@ -4,25 +4,25 @@
 static inline double f(double x) { return sin(x) - 1.0 / x; }
 static inline double g(double x) { return 1.0 / sin(x); }
 int main() {
-  double x, e, xNext;
+  double Xₚᵣₑᵥ, e, Xₙₑₓₜ;
   int i, maxIteration = 20;
   printf("Enter initial guess: ");
-  scanf("%lf", &x);
+  scanf("%lf", &Xₚᵣₑᵥ);
   printf("Enter tolerable error: ");
   scanf("%lf", &e);
 
   for (i = 1; i <= maxIteration; ++i) {
-    xNext = g(x);
-    printf("Iteration %d: x = %lf, f(x) = %lf\n", i, xNext, f(x));
-    if (fabs(xNext - x) < e)
+    Xₙₑₓₜ = g(Xₚᵣₑᵥ);
+    printf("Iteration %d: x = %lf, f(x) = %lf\n", i, Xₙₑₓₜ, f(Xₚᵣₑᵥ));
+    if (fabs(Xₙₑₓₜ - Xₚᵣₑᵥ) < e)
       break;
-    x = xNext;
+    Xₚᵣₑᵥ = Xₙₑₓₜ;
     if (i == maxIteration) {
       printf("Error! Failed to converge within %d iterations.\n", i);
       exit(1);
     }
   }
-  printf("Converged to solution x = %lf after %d iterations.\n", xNext, i);
+  printf("Converged to solution x = %lf after %d iterations.\n", Xₙₑₓₜ, i);
   return 0;
 }
 /*
