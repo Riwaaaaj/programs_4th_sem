@@ -1,0 +1,27 @@
+1. Create a new linked list for the result (initialize resultHead = nullptr)
+
+2. Set ptr1 = poly1, ptr2 = poly2
+
+3. while (ptr1 != nullptr OR ptr2 != nullptr):
+
+    a. Create a new node resultNode using DMA
+
+    b. if ptr1 != nullptr AND ptr2 != nullptr AND ptr1->power == ptr2->power:
+        resultNode->coeff = ptr1->coeff - ptr2->coeff
+        resultNode->power = ptr1->power
+        ptr1 = ptr1->next
+        ptr2 = ptr2->next
+
+    c. else if ptr2 == nullptr OR (ptr1 != nullptr AND ptr1->power > ptr2->power):
+        resultNode->coeff = ptr1->coeff
+        resultNode->power = ptr1->power
+        ptr1 = ptr1->next
+
+    d. else: // ptr1 == nullptr OR ptr2->power > ptr1->power
+        resultNode->coeff = -ptr2->coeff
+        resultNode->power = ptr2->power
+        ptr2 = ptr2->next
+
+    e. Append resultNode to the result list
+
+4. Return resultHead

@@ -1,0 +1,110 @@
+int arr[MAX];  // array to store list elements
+int size = 0;  // current number of elements
+
+insertAtBeginning(item)
+    1. if (size == MAX)
+        Print "List is full"
+        return -1
+
+    2. for (int i = size - 1; i >= 0; i--)
+        arr[i + 1] = arr[i]
+
+    3. arr[0] = item
+    4. size++
+
+insertAtEnd(item)
+    1. if (size == MAX)
+        Print "List is full"
+        return -1
+
+    2. arr[size] = item
+    3. size++
+
+insertAtSpecifiedPosition(item, position)
+    1. if (size == MAX)
+        Print "List is full"
+        return -1
+
+    2. if (position < 0 || position > size)
+        Print "Invalid position"
+        return -1
+
+    3. for (int i = size - 1; i >= position; i--)
+        arr[i + 1] = arr[i]
+
+    4. arr[position] = item
+    5. size++
+
+deleteAtBeginning()
+    1. if (size == 0)
+        Print "List is empty"
+        return -1
+
+    2. for (int i = 1; i < size; i++)
+        arr[i - 1] = arr[i]
+
+    3. size--
+
+    deleteAtEnd()
+    1. if (size == 0)
+        Print "List is empty"
+        return -1
+
+    2. size--
+
+deleteAtSpecifiedPosition(position)
+    1. if (size == 0)
+        Print "List is empty"
+        return -1
+
+    2. if (position < 0 || position >= size)
+        Print "Invalid position"
+        return -1
+
+    3. for (int i = position + 1; i < size; i++)
+        arr[i - 1] = arr[i]
+
+    4. size--
+
+traverse()
+    1. if (size == 0)
+        Print "List is empty"
+        return -1
+
+    2. for (int i = 0; i < size; i++)
+        Print arr[i]
+
+Queue using List
+
+const int MAX = 100;
+int queue[MAX];
+int front = 0;
+int rear = -1;
+
+enqueue(item)
+    1. if (rear == MAX - 1)
+        Print "Queue is full"
+        return -1
+
+    2. rear++
+    3. queue[rear] = item
+
+dequeue()
+    1. if (front > rear)
+        Print "Queue is empty"
+        return -1
+
+    2. temp = queue[front]
+    3. front++
+    4. if (front > rear)
+        front = 0;
+        rear = -1;
+    5. return temp
+
+traverse()
+    1. if (front > rear)
+        Print "Queue is empty"
+        return -1
+
+    2. for (int i = front; i <= rear; i++)
+        Print queue[i]

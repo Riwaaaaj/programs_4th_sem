@@ -1,0 +1,32 @@
+const int MAX = 100;
+int queue[MAX];
+int front = 0;
+int rear = -1;
+
+enqueue(item)
+    1. if (rear == MAX - 1)
+        Print "Queue is full"
+        return -1
+
+    2. rear++
+    3. queue[rear] = item
+
+dequeue()
+    1. if (front > rear)
+        Print "Queue is empty"
+        return -1
+
+    2. temp = queue[front]
+    3. front++
+    4. if (front > rear)
+        front = 0;
+        rear = -1;
+    5. return temp
+
+traverse()
+    1. if (front > rear)
+        Print "Queue is empty"
+        return -1
+
+    2. for (int i = front; i <= rear; i++)
+        Print queue[i]

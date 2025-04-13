@@ -1,0 +1,101 @@
+Let *head be a pointer that initally points to nullptr
+Let each node of the singly linked list have an info, 
+and next field(next field = pointer that points to the next node)
+
+insertAtBeginning(item)
+  1. Create a newNode using DMA (malloc or new)
+  2. Set newNode->info = item
+  3. Set newNode->next = head
+  4. Set head = newNode
+
+insertAtEnd(item)
+    1. Create a newNode using DMA (malloc or new)
+    2. Set newNode->info = item
+    3. Set newNode->next = nullptr
+
+    4. if (head == nullptr)
+        // List is empty, insert as first node
+        head = newNode
+        return
+
+    5. Set current = head
+
+    6. while (current->next != nullptr)
+        current = current->next
+
+    7. current->next = newNode
+
+insertAtSpecifiedPosition(item, position)
+    1. Create a newNode using DMA (malloc or new)
+    2. Set newNode->info = item
+
+    3. if (position == 0) // Inserting at the beginning
+        newNode->next = head
+        head = newNode
+        return
+    4. Set current = head
+    5. Set index = 0
+
+    6. while (index < position - 1 AND current != nullptr)
+        current = current->next
+        index++
+
+    7. if (current == nullptr)
+        Print "Invalid position"
+        return -1
+
+    8. newNode->next = current->next
+    9. current->next = newNode
+
+traverse()
+    1. if (head == nullptr)
+      print "SLL is empty"
+      return -1
+    2. Set current = head
+    3. while (current != nullptr)
+        print current->info
+        current = current->next
+deleteAtBeginning()
+    1. if (head == nullptr)
+      print "SLL is empty"
+      return -1
+    2. Set deleteNode = head
+    3. Set head = head->next
+    4. delete deleteNode
+
+deleteAtEnd()
+    1. if (head == nullptr)
+        print "SLL is empty"
+        return -1
+    2. if (head->next == nullptr)
+        // Only one node in the list
+        delete head
+        head = nullptr
+        return
+    3. Set current = head
+    4. while (current->next->next != nullptr)
+        current = current->next
+    5. Set deleteNode = current->next
+    6. current->next = nullptr
+    7. delete deleteNode
+
+deleteAtSpecifiedPosition(item, position)
+    1. if (head == nullptr)
+        print "SLL is empty"
+        return -1
+    2. if (position == 0)
+        Set deleteNode = head
+        Set head = head->next
+        delete deleteNode
+        return
+    3. Set current = head
+    4. Set index = 0
+    5. while (index < position - 1 AND current != nullptr)  // imp
+        current = current->next
+        index++
+    6. if (current == nullptr OR current->next == nullptr)  //imp
+        print "Invalid position"
+        return -1
+    7. Set deleteNode = current->next
+    8. current->next = current->next->next
+    9. delete deleteNode

@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int partition(int arr[], int low, int high) {
+int partition(int arr[], int low, int high) { //Lomuto partition scheme
   int pivot = arr[high];
   int i = low - 1;
 

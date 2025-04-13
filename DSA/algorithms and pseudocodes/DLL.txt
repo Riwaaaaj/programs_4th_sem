@@ -1,0 +1,128 @@
+struct Node {
+    int info; // could be int or any other type
+    Node* prev;
+    Node* next;
+};
+OR
+class Node {
+public:
+  int info;
+  Node* next;
+};
+
+insertAtBeginning(item)
+     1. Create newNode using DMA
+     2. Set newNode->info = item
+     3. Set newNode->prev = nullptr
+     4. Set newNode->next = head
+
+     5. if head != nullptr
+          head->prev = newNode
+
+     6. Set head = newNode
+
+insertAtEnd(item)
+     1. Create newNode using DMA
+     2. Set newNode->info = item
+     3. Set newNode->next = nullptr
+
+     4. if head == nullptr
+          newNode->prev = nullptr
+          head = newNode
+          return
+
+     5. Set current = head
+     6. while current->next != nullptr
+          current = current->next
+
+     7. Set current->next = newNode
+     8. Set newNode->prev = current
+
+insertAtSpecifiedPosition(item, position)
+     1. Create newNode using DMA
+     2. Set newNode->info = item
+
+     3. if position == 0
+          newNode->prev = nullptr
+          newNode->next = head
+          if head != nullptr
+          head->prev = newNode
+          head = newNode
+          return
+
+     4. Set current = head
+     5. Set index = 0
+     6. while index < position - 1 AND current != nullptr
+          current = current->next
+          index++
+
+     7. if current == nullptr
+          Print "Invalid position"
+          return -1
+
+     8. Set newNode->next = current->next
+     9. Set newNode->prev = current
+
+     10. if current->next != nullptr
+          current->next->prev = newNode
+
+     11. Set current->next = newNode
+
+traverse()
+     1. if head == nullptr
+          Print "DLL is empty"
+          return -1
+     2. Set current = head
+     3. while current != nullptr
+          Print current->info
+          current = current->next
+
+
+deleteAtBeginning()
+     1. if head == nullptr
+          Print "DLL is empty"
+          return -1
+     2. Set deleteNode = head
+     3. Set head = head->next
+     4. if head != nullptr
+          head->prev = nullptr
+     5. Delete deleteNode
+
+deleteAtEnd()
+     1. if head == nullptr
+          Print "DLL is empty"
+          return -1
+     2. if head->next == nullptr
+          Delete head
+          head = nullptr
+          return
+     3. Set current = head
+     4. while current->next != nullptr
+          current = current->next
+     5. Set current->prev->next = nullptr
+     6. Delete current
+
+deleteAtSpecifiedPosition(position)
+     1. if head == nullptr
+          Print "DLL is empty"
+          return -1
+     2. if position == 0
+          Set deleteNode = head
+          Set head = head->next
+          if head != nullptr
+          head->prev = nullptr
+          Delete deleteNode
+          return
+     3. Set current = head
+     4. Set index = 0
+     5. while index < position AND current != nullptr
+          current = current->next
+          index++
+
+     6. if current == nullptr
+          Print "Invalid position"
+          return -1
+     7. Set current->prev->next = current->next
+     8. if current->next != nullptr
+          current->next->prev = current->prev
+     9. Delete current

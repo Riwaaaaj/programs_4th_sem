@@ -1,0 +1,92 @@
+struct Node {
+    int data;
+    Node* left; // used as left child
+    Node* right; // used as right child
+};
+
+createNode(item)
+    1. Allocate memory for newNode using malloc or new
+    2. Set newNode->data = item
+    3. Set newNode->left = nullptr
+    4. Set newNode->right = nullptr
+    5. return newNode
+
+insert(root, item)
+    1. if (root == nullptr)
+        return createNode(item)
+
+    2. if (item < root->data)
+        root->left = insert(root->left, item)
+
+    3. else if (item > root->data)
+        root->right = insert(root->right, item)
+
+    4. return root
+
+search(root, item)
+    1. if (root == nullptr OR root->data == item)
+        return root
+
+    2. if (item < root->data)
+        return search(root->left, item)
+
+    3. else
+        return search(root->right, item)
+
+findMin(root)
+    1. while (root->left != nullptr)
+        root = root->left
+
+    2. return root
+
+    findMin(root)
+    1. while (root->left != nullptr)
+        root = root->left
+
+    2. return root
+
+
+
+
+
+
+
+
+
+
+
+
+deleteNode(root, item)
+    1. if (root == nullptr)
+        return nullptr
+
+    2. if (item < root->data)
+        root->left = deleteNode(root->left, item)
+
+    3. else if (item > root->data)
+        root->right = deleteNode(root->right, item)
+
+    4. else:
+      a. if (root->left == nullptr)
+            temp = root->right
+            delete root
+            return temp
+
+      b. else if (root->right == nullptr)
+            temp = root->left
+            delete root
+            return temp
+
+      c. temp = findMin(root->right)
+          root->data = temp->data
+          root->right = deleteNode(root->right, temp->data)
+
+    5. return root
+
+inorderTraversal(root)
+    1. if (root == nullptr)
+        return
+
+    2. inorderTraversal(root->left)
+    3. print root->data
+    4. inorderTraversal(root->right)
